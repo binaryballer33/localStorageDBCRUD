@@ -38,3 +38,11 @@ h3 {
     text-align: center;
     color: darkslategray;
 }
+
+p {
+    text-align: center;
+    color: darkslategray;
+    background-color: #000;
+    width: 50%;
+    margin: 0 auto;
+}
