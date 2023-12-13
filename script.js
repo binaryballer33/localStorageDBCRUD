@@ -1,5 +1,5 @@
 let database = [];
-const defaultNames = ['JAMES', 'JORDAN', 'KAREEM', 'WILT', 'BILL', 'MAGIC', 'LARRY', 'KOBE', 'SHAQ', 'ALLEN', 'LEBRON', 'STEPHEN', 'KEVIN', 'KAWHI', 'GIANNIS', 'ANTHONY', 'JAMES', 'PAUL', 'RUSSELL', 'KARL', 'TIM', 'SHAQUILLE', 'JAMES', 'JORDAN', 'KAREEM', 'WILT', 'BILL', 'MAGIC', 'LARRY', 'KOBE', 'SHAQ', 'ALLEN', 'LEBRON', 'STEPHEN', 'KEVIN', 'KAWHI', 'GIANNIS', 'ANTHONY', 'JAMES', 'PAUL', 'RUSSELL', 'KARL', 'TIM', 'SHAQUILLE', 'JAMES', 'JORDAN', 'KAREEM', 'WILT', 'BILL', 'MAGIC', 'LARRY', 'KOBE', 'SHAQ', 'ALLEN', 'LEBRON', 'STEPHEN', 'KEVIN', 'KAWHI', 'GIANNIS', 'ANTHONY', 'JAMES', 'PAUL', 'RUSSELL', 'KARL', 'TIM', 'SHAQUILLE', 'JAMES', 'JORDAN', 'KAREEM', 'WILT', 'BILL', 'MAGIC', 'LARRY', 'KOBE', 'SHAQ', 'ALLEN', 'LEBRON', 'STEPHEN', 'KEVIN', 'KAWHI', 'GIANNIS', 'ANTHONY', 'JAMES', 'PAUL', 'RUSSELL', 'KARL', 'TIM']
+const defaultNames = ['LEBRON', 'JORDAN', 'KAREEM', 'WILT', 'BILL', 'MAGIC', 'BIRD', 'KOBE', 'SHAQ', 'AI', 'RAY', 'CURRY', 'KEVIN', 'KAWHI', 'GIANNIS', 'MELO', 'STOCKTON', 'MALONE', 'RONDO', 'DWIGHT', 'DUNCAN', 'SHAQUILLE_THE_CREATOR', 'DROSE', 'WESTBROOK', 'CP3', 'PIPPEN', 'EMBID', 'JOKER', 'MURRAY', 'HARDEN', 'KYRIE', 'AI', 'KLAY', 'DRAYMOND', 'BARKLEY', 'WEMBY', 'AD', 'ZION', 'JA', 'LILLARD', 'WEBBER', 'KIDD', 'NASH', 'GARNETT', 'LUKA', 'DIRK', 'VINCE', 'T-MAC', 'AGENT0', 'CRAWFORD']
 if (localStorage.getItem('databaseTest')) {
     database = JSON.parse(localStorage.getItem('databaseTest'));
 }
@@ -9,6 +9,9 @@ const createButton = document.getElementById('btnCreate');
 const readButton = document.getElementById('btnRead');
 const updateButton = document.getElementById('btnUpdate');
 const deleteButton = document.getElementById('btnDelete');
+const emptyButton = document.getElementById('btnEmpty');
+const fillButton = document.getElementById('btnFill');
+const generateFiveButton = document.getElementById('btnGenerateFive');
 
 createButton.addEventListener('click', () => {
     const name = prompt('Enter Name Of Employee', defaultNames[Math.floor(Math.random() * defaultNames.length)]);
@@ -52,6 +55,40 @@ deleteButton.addEventListener('click', () => {
     const name = prompt('Enter The Name Of The Employee You Want To Delete', database[Math.floor(Math.random() * database.length)].name);
     const index = database.findIndex(item => item.name === name);
     name === 'SHAQUILLE' ? alert("You can't delete me, I'm the creator hahaha!!!") : database.splice(index, 1)
+    localStorage.setItem('databaseTest', JSON.stringify(database));
+    readButton.click();
+});
+
+emptyButton.addEventListener('click', () => {
+    if (database.length === 0) {
+        alert('The Database Is Already Empty');
+        return;
+    }
+
+    const confirm = prompt('Are You Sure You Want To Delete All Employees? (Y/N)', 'N');
+    if (confirm.toUpperCase() === 'Y') {
+        database = [];
+        localStorage.setItem('databaseTest', JSON.stringify(database));
+        readButton.click();
+    }
+});
+
+fillButton.addEventListener('click', () => {
+    if (database.length === 0) {
+        defaultNames.forEach(name => {
+            database.push({ name });
+        });
+        localStorage.setItem('databaseTest', JSON.stringify(database));
+        readButton.click();
+    } else {
+        alert('Empty The Database First');
+    }
+});
+
+generateFiveButton.addEventListener('click', () => {
+    for (let i = 0; i < 5; i++) {
+        database.push({ name: defaultNames[Math.floor(Math.random() * defaultNames.length)] });
+    }
     localStorage.setItem('databaseTest', JSON.stringify(database));
     readButton.click();
 });

@@ -1,7 +1,8 @@
 .container {
     background-color: darkslategray;
     padding: 24px;
-    height: 95vh;
+    min-height: 95vh; 
+    max-height: 95%; 
 }
 
 #data {
@@ -23,13 +24,14 @@
     margin: 10px;
 }
 
-.btn:hover {
+.btn:hover, p:hover {
     background-color: gray;
     color: darkslategray;
 }
 
 .buttonGroup {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
