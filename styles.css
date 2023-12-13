@@ -1,0 +1,40 @@
+.container {
+    background-color: darkslategray;
+    padding: 24px;
+    height: 95vh;
+}
+
+#data {
+    background-color: teal;
+    color: #000;
+    width: 80%;
+    margin: 0 auto;
+    padding: 2px 0px;
+}
+
+.btn {
+    background-color: #000;
+    color: teal;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: gray;
+    color: darkslategray;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    text-align: center;
+    color: darkslategray;
+}
